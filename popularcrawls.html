@@ -1,0 +1,426 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VPCG</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+	 <link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css'>  
+	   
+ <head>
+  <body>
+    <style>
+	@import url(http://fonts.googleapis.com/css?family=Lato:700,900);
+
+body {
+	background-color:rgba(20,103,89,1.00);
+	
+}
+
+h1 {
+    display: inline-block;
+    margin-top: 0px;
+    color:  #146759;
+    
+    border-bottom: solid 5px #D17A1E;
+    transform: skew(0, -5deg);
+	font-family: 'Nova Flat', cursive;
+}
+
+#action {
+    margin: 0 auto;
+	right: 400px;
+    width: 600px;
+    position: relative;
+    height: 100px;
+   	z-index: 1;
+	max-height:inherit;
+	max-width:inherit;
+	padding-bottom: 10px;
+}
+
+#keg {
+    position: absolute;
+    height: 200px;    
+    width: 70px;
+    background-color: #656D78;
+    border-right: solid 20px #434A54;
+    bottom: 0;
+    left: 310px;
+}
+#pipe {
+    position: absolute;
+    height: 30px;
+    width: 10px;
+    top: 30px;
+    left: 10px;
+    background-color: #CCD1D9;
+}
+
+#pipe:before {
+    position: absolute;
+    display: block;
+    content: " ";
+    height: 20px;
+    width: 30px;
+    top: -5px;
+    left: 5px;
+    background: linear-gradient(to bottom, #CCD1D9 50%, #AAB2BD 50%);
+    border-radius: 0 10px 10px 0;
+}
+
+#pipe:after {
+    position: absolute;
+    display: block;
+    content: " ";
+    width: 10px;
+    background-color: rgba(255, 206, 84, 0.5);
+    
+    animation: flow 6s ease infinite;
+}
+
+@keyframes flow {
+    0%, 15% { 
+        top: 30px;
+        height: 0px;
+    }
+    20% { 
+         height: 125px;
+    }
+    40% {        
+        top: 30px;
+        height: 85px;
+    }
+    55% {
+        top: 30px;
+        height: 60px;
+    }
+    60%, 100% {
+        top: 70px;
+        height: 0px;
+    }
+}
+
+#pipe-front {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    top: 25px;
+    left: 5px;
+    background-color: #F5F7FA;
+    border-radius: 10px;
+    border: solid 3px #CCD1D9;
+}
+
+#pipe-handle {
+    transform-origin: center bottom;
+    position: absolute;
+    width: 0;
+    height: 5px;
+    top: -20px;
+    left: 5px;
+    border-style: solid;
+    border-width: 50px 10px 0 10px;
+    border-color: black transparent transparent transparent;
+    
+    animation: handle 6s ease infinite;    
+}
+#pipe-handle:before {
+    position: absolute;
+    top: -60px;
+    left: -10px;
+    display: block;
+    content: ' ';
+    width: 20px;
+    height: 10px;
+    background-color: #CCD1D9;
+    border-radius: 5px 5px 0 0;
+}
+#pipe-handle:after {
+    position: absolute;
+    top: -20px;
+    left: -5px;
+    display: block;
+    content: ' ';
+    width: 10px;
+    height: 20px;
+    background-color: #CCD1D9;
+}
+@keyframes handle {
+    0%, 10% { 
+       transform: rotate(0deg);
+    }
+    20%, 50% { 
+         transform: rotate(-90deg);
+    }
+    60%, 100% {
+        transform: rotate(0deg);
+    }
+}
+
+.glass {    
+    position: absolute;
+    height: 100px;
+    width: 70px;
+
+   background-color: #F3EDD1;
+   border: thick;
+    border-radius: 5px;
+    animation: slide 6s ease forwards infinite;
+	z-index: 1;
+	max-height:inherit;
+	max-width:inherit;
+}
+
+@keyframes slide {
+    0% { 
+        opacity: 0;
+        left: 0; 
+    }
+    20%, 80% { 
+        opacity: 1;
+        left: 300px; 
+    }
+    100% {
+         opacity: 0;
+        left: 600px;
+    }
+}
+
+.front-glass {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);   
+    border-radius: 5px;
+}
+
+.beer {
+    position: absolute;
+    bottom: 15px;
+    margin: 0 5px;
+    /*height: 80%;*/
+    width: 60px;
+    background-color: rgba(255, 206, 84, 0.8); /* #FFCE54*/
+    border-radius: 0 0 5px 5px;
+    border-top: solid 0px rgba(255, 206, 84, 0.8);
+    
+    animation: fillup 6s ease infinite;
+}
+.beer:after {
+    position: absolute;
+    display: block;
+    content: " ";
+    /*height: 20px;*/
+    width: 100%;
+    background-color: white;
+    /*top: -20px;*/
+    border-radius: 5px 5px 0 0;
+    
+    animation: fillupfoam 6s linear infinite, wave 0.5s alternate infinite;
+}
+
+.handle {
+    position: absolute;
+    right: -20px;
+    top: 20px;
+}
+.handle .top-right {
+    height: 20px;
+    width: 10px;
+    border-top: solid 10px rgba(255, 255, 255, 0.4);
+    border-right: solid 10px rgba(255, 255, 255, 0.4);
+    border-top-right-radius: 20px;
+}
+.handle .bottom-right {
+    height: 20px;
+    width: 10px;
+    border-bottom: solid 10px rgba(255, 255, 255, 0.4);
+    border-right: solid 10px rgba(255, 255, 255, 0.4);
+    border-bottom-right-radius: 20px;
+}
+
+@keyframes fillup {
+    0%, 20% { 
+        height: 0px; 
+        border-width: 0px;
+    }
+    40% {
+        height: 40px; 
+    }
+    80%, 100% { 
+        height: 80px; 
+        border-width: 5px;
+    }
+}
+@keyframes fillupfoam {
+    0%, 20% { 
+        top: 0px;
+        height: 0px; 
+    }
+    60%, 100% { 
+        top: -14px;
+        height: 15px; 
+    }
+}
+@keyframes wave {
+    from { 
+        transform: skew(0, -3deg);
+    }
+    to { 
+        transform: skew(0, 3deg);
+    }
+}
+
+	
+	</style>  
+ <div class="row">
+    <div class="large-3 columns">
+     
+       </div>
+    <div class="large-9 columns topbar text-center"">
+      <ul class="center button-group">
+    	<li><a href="index.html" class="button">Home</a></li>
+    	<li><a href="about.html" class="button">About</a></li>
+    	 <li id="current"><a href="popularcrawls.html" class="button">The Crawls</a></li>
+    	<li><a href="contact.html" class="button">Contact</a></li>
+    	</ul>
+     </div>
+   </div>
+  
+  	<div class="row">
+    <div class="large-12 columns">
+    <div id="slider">
+    	<img src="img/banner.png"/>
+    </div>
+    
+    
+  
+    <hr/>
+    </div>
+  </div>
+  
+  	<div class="row">
+    <div class="large-12 columns">
+    <div id="slider">
+    	<img src="img/banner5.png"/>
+    </div>
+    
+    
+  
+    <hr/>
+    </div>
+  </div>
+ 
+	<div class="row"> 
+		<div class="large-4 columns">
+        <h1><br>Yaletown</h1>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m47!1m12!1m3!1d5206.129307564789!2d-123.12661513206278!3d49.275172108389974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m32!1i0!3e2!4m5!1s0x548673d6e4ea2f1f%3A0xfe04ea3750b6196d!2sHub+Restaurant+Yaletown%2C+Mainland+Street%2C+Vancouver%2C+BC!3m2!1d49.275002!2d-123.121681!4m5!1s0x548673d64397471f%3A0x18418bdd42d14f4c!2sPhat%2C+1055+Mainland+Street%2C+Vancouver%2C+BC+V6B+1A9!3m2!1d49.276089999999996!2d-123.120027!4m5!1s0x548673d6f5b3f979%3A0x8b19ae680868750a!2sYaletown+Brewing+Company%2C+Mainland+Street%2C+Vancouver%2C+BC!3m2!1d49.275489!2d-123.12089399999999!4m5!1s0x548673d68da3373f%3A0xd624fa07f6e1c6a9!2sThe+New+Oxford%2C+Homer+Street%2C+Vancouver%2C+BC!3m2!1d49.275757999999996!2d-123.122294!4m5!1s0x548673d12cd1ff93%3A0x643220e7facda0d8!2sSoho+Billiards%2C+Hamilton+Street%2C+Vancouver%2C+BC!3m2!1d49.274105999999996!2d-123.124136!5e0!3m2!1sen!2sca!4v1429392185180" width="300" height="200" frameborder="0" style="border:3px"></iframe>
+    
+     
+      <p><br></br>This crawl should take you 45 minutes, max 2 drinks/pub<br> <br>
+      <ol>
+   <li id="current2"><a href="http://www.hubrestaurant.ca/contact.html">Hub Restaurant and Lounge </a></li>
+  <li id="current2"><a href="http://www.phatdeli.com">Phat Sports Bar</a></li>
+   <li id="current2"><a href="http://www.mjg.ca/yaletown/">Yaletown Brew Pub</a></li> 
+    <li id="current2"><a href="http://donnellygroup.ca/new-oxford/">The New Oxford</a></li>
+<li id="current2"><a href="http://www.sohocafe.ca/">Soho Billiards</a></li>
+    </ol>
+    <div id="14292809972452" class="wE"><script src="http://widget-engine.com/w:0:003:14292809972452:6:000:40" type="text/javascript"></script><a href="http://widget-engine.com/ratingcode.php" class="wE" title="Free Rating Code for your webprojects">Get free premium widgets for your blog and website.</a> </p>
+    </div></div>
+    
+    <div class="large-4 columns">
+      <h1>Granville Street</h1>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m41!1m12!1m3!1d10410.970060153611!2d-123.12789891173459!3d49.28127602138429!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m26!1i0!3e2!4m5!1s0x5486717e243f711b%3A0xe9f0fd5af77ef0ca!2sUva+Wine+%26+Cocktail+Bar%2C+Seymour+Street%2C+Vancouver%2C+BC!3m2!1d49.279543!2d-123.12043299999999!4m5!1s0x548673d59652d3a7%3A0xc5510d8a283d2b49!2sDoolin&#39;s+Irish+Pub%2C+Nelson+Street%2C+Vancouver%2C+BC!3m2!1d49.279002!2d-123.122889!4m5!1s0x548673d58324abad%3A0x4b91869a321053e3!2sGranville+Room%2C+Granville+Street%2C+Vancouver%2C+BC!3m2!1d49.279737!2d-123.122328!4m5!1s0x5486717e2ac31d53%3A0x6c40aa05af304239!2sRoxy+Burger%2C+Granville+Street%2C+Vancouver%2C+BC!3m2!1d49.280103999999994!2d-123.121539!5e0!3m2!1sen!2sca!4v1429392616922" width="300" height="200" frameborder="0" style="border:3px"></iframe>
+      
+    
+     <p> <br></br>This crawl should take you 35 minutes, max 2 drinks/pub<br><br>
+      <ol>
+  <li id="current2"><a href="http://www.uvavancouver.com/"> Uva Wine Bar </a></li>
+	<li id="current2"><a href="http://www.roxyburger.com"> Roxy Burger </a></li>
+ <li id="current2"><a href="http://www.doolins.ca/"> Doolin's Irish Pub  </a></li>
+  <li id="current2"><a href="http://donnellygroup.ca/granville-room/">Granville Room </a></li>
+<br></ol>
+  <br></br>
+   <div id="14292809972452" class="wE"><script src="http://widget-engine.com/w:0:003:14292809972452:6:000:40" type="text/javascript"></script><a href="http://widget-engine.com/ratingcode.php" class="wE" title="Free Rating Code for your webprojects">Get free premium widgets for your blog and website.</a> </p>
+    </div></div>
+    
+    
+   
+    <div class="large-4 columns">
+      <h1>Kitsilano &amp; West 4th </h1>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m41!1m12!1m3!1d20827.215329454906!2d-123.17286789444252!3d49.268781031144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m26!1i0!3e2!4m5!1s0x548673b42c802ea3%3A0x533b4ec45a097fe3!2sRoom+Eighteen+Restaurant%2C+Vancouver%2C+BC!3m2!1d49.268004!2d-123.151471!4m5!1s0x548673b5d425b22d%3A0xca53f2775dfa0856!2sThe+Bimini+Public+House%2C+West+4th+Avenue%2C+Vancouver%2C+BC!3m2!1d49.267993999999995!2d-123.151157!4m5!1s0x54867252aa56a5bd%3A0xc873126c4bf366d7!2sThe+Oakwood+Canadian+Bistro%2C+West+4th+Avenue%2C+Vancouver%2C+BC!3m2!1d49.268567!2d-123.16711699999999!4m5!1s0x548673b5292345d1%3A0x654265fba37ced9!2sSunset+Grill%2C+York+Avenue%2C+West+Side%2C+Vancouver%2C+BC!3m2!1d49.271693!2d-123.15520699999999!5e0!3m2!1sen!2sca!4v1429392929755" width="300" height="200" frameborder="0" style="border:3px"></iframe>
+      
+     
+      <p><br></br>This crawl should take you 65 minutes, max 2 drinks/pub
+      <ol><br>
+      <li id="current2"><a href="http://donnellygroup.ca/three-brits/">The Three Brits </a></li>
+       <li id="current2"><a href="http://donnellygroup.ca/bimini/">The Bimini</a></li>
+      <li id="current2"><a href="http://www.theoakwood.ca">The Oakwood Canadian Bistro</a></li>
+        <li id="current2"><a href="http://sunsetgrillvancouver.com">Sunset Grill Taphouse & Whiskey Bar</a></li>
+      <br>
+      </ol>
+        
+        <div id="14292809972452" class="wE"><script src="http://widget-engine.com/w:0:003:14292809972452:6:000:40" type="text/javascript"></script><a href="http://widget-engine.com/ratingcode.php" class="wE" title="Free Rating Code for your webprojects">Get free premium widgets for your blog and website.</a> </p>
+    </div></div>
+    
+    
+    
+
+    <br></br>
+    <div class="large-4 columns">
+       <h1><br>Gastown</h1>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m47!1m12!1m3!1d5205.257564322511!2d-123.1093415580719!3d49.28343090816944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m32!1i0!3e2!4m5!1s0x5486717134b59557%3A0xe75b59253865b201!2sAlibi+Room%2C+Alexander+Street%2C+Vancouver%2C+BC!3m2!1d49.284265!2d-123.100228!4m5!1s0x54867179ce007007%3A0x35f90582cb57279e!2sPourhouse+Restaurant%2C+Water+Street%2C+Vancouver%2C+BC!3m2!1d49.28405!2d-123.10834!4m5!1s0x54867179e442b6c1%3A0xc59a31fa8599c1d2!2sRevel+Room%2C+Abbott+Street%2C+Vancouver%2C+BC!3m2!1d49.283069999999995!2d-123.10656999999999!4m5!1s0x54867179f054afd1%3A0x91db82f4bce135f8!2sThe+Metropole+Community+Pub%2C+Abbott+Street%2C+Vancouver%2C+BC!3m2!1d49.282596999999996!2d-123.10682399999999!4m5!1s0x54867179b97122b3%3A0x691a2f9f7d2d10df!2sThe+Cambie+Hostel+Gastown%2C+Cambie+Street%2C+Vancouver%2C+BC!3m2!1d49.283255999999994!2d-123.10906299999999!5e0!3m2!1sen!2sca!4v1429393088658" width="300" height="200" frameborder="0" style="border:3px"></iframe>
+    
+      <p> <br></br>This crawl should take you 45 minutes, max 2 drinks/pub<br>
+      <ol>
+     <li id="current2"><a href="http://www.alibi.ca">Alibi</a></li>
+    <li id="current2"><a href="http://www.pourhousevancouver.com/">Pourhouse</a></li>
+     <li id="current2"><a href="http://www.revelroom.ca">Revel</a></li>
+     <li id="current2"><a href="http://www.themetpub.ca">Metropole</a></li>
+     <li id="current2"><a href="http://cambiehostelsgastown.com/">The Cambie</a></li>
+      </ol>
+      <br></br>
+     <div id="14292809972452" class="wE"><script src="http://widget-engine.com/w:0:003:14292809972452:6:000:40" type="text/javascript"></script><a href="http://widget-engine.com/ratingcode.php" class="wE" title="Free Rating Code for your webprojects">Get free premium widgets for your blog and website.</a> </p>
+    
+    
+    </div></div>
+    
+
+    
+</div>
+<div class="row">
+    <div class="large-12 columns">
+    
+      <div class="panel">
+        <h4>Get in touch!</h4>
+            
+        <div class="row">
+          <div class="large-9 columns">
+            <p>We'd love to hear from you.</p>
+          </div>
+              <div class="large-6 columns">
+          <ul class="inline-list right">
+        
+             <li><a href="#" <button type="submit" style="border: 5px; background: transparent">
+            <img src="img/insta.png" width="60" height="40" alt="submit" /></button></a></li>
+            <li><a href="#" <button type="submit" style="border: 0; background: transparent">
+            <img src="img/facebook.png" width="60" height="40" alt="submit" /></button></a></li>
+            <li><a href="contact.html" class="radius button right">Contact Us</a></li>
+          </ul>
+        </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+   
+  
+    
+    </body>
+    </html>
+    
